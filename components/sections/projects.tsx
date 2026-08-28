@@ -32,6 +32,15 @@ export default function Projects() {
             body: 'A startup project aimed at helping users find parking spots in real-time. Built with RILT (React + Inertia + Laravel + Tailwind) stack, it features a user-friendly interface and integrates with MapLibre GL API (for now) for location services.',
             link: 'https://github.com/JesseEmmanuel/park-finder'
         },
+        {
+            name: 'Bullpup Landing Page',
+            image: 'bullpup.png',
+            type: 'Landing page',
+            color: 'green',
+            techStack: ['React', 'Tailwind', 'Resend'],
+            body: 'A professional landing page designed for a local business to showcase its services, establish a strong online presence, and make it easy for potential customers to learn more and get in touch.',
+            link: 'https://bullpupptyltd.com/'
+        },
     ]
 
     return (
@@ -43,7 +52,7 @@ export default function Projects() {
                         03 / SELECTED WORK
                     </p>
                     <h2>
-                        Things I&apos;ve<br /><em>made.</em>
+                        Things I&apos;ve<br /><em>made or I'm part of.</em>
                     </h2>
                 </div>
                 <p className="section-aside">
