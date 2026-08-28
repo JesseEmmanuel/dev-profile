@@ -44,7 +44,7 @@ export default function Page() {
       </section>
 
       <section id="about" className="about section-grid ruled">
-        <div><p className="eyebrow">01 / THE PERSON</p><h2>Hi, I&apos;m Jesse.</h2></div>
+        <div className="about-heading"><p className="eyebrow">01 / THE PERSON</p><h2>Hi, I&apos;m Jesse.</h2><a className="resume-link" href="/jesse-emmanuel-basco-resume.pdf" target="_blank" rel="noreferrer">VIEW MY RESUME <span>↗</span></a></div>
         <div className="about-note note note-pink tilt-right"><Pin /><div className="portrait-frame"><img src="/me.jpg" alt="Jesse Emmanuel Basco smiling at an event" /></div><p>I&apos;m a full-stack developer based in the Philippines, focused on building scalable applications and thoughtful interfaces. I enjoy the messy middle: translating a hard problem into something clear, useful, and a little delightful.</p><p className="signature">— Jesse</p></div>
       </section>
 
