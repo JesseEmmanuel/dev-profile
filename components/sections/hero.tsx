@@ -5,8 +5,8 @@ export default function Hero() {
         <section id="top" className="hero section-grid">
             <div className="hero-copy note note-yellow tilt-left">
                 <Pin /><p className="eyebrow">THE DEVELOPER GAZETTE</p>
-                <h1>Building digital<br /><em>things</em> with care.</h1>
-                <p className="intro">Full-stack software developer crafting robust, user-centric web experiences from frontend finesse to backend reliability.</p>
+                <h1>Building the web, <br /> one <em>thoughtful</em> solution at a time.</h1>
+                <p className="intro">Full-stack web developer crafting robust, user-centric web experiences from frontend finesse to backend reliability.</p>
                 <a className="ink-link" href="#work">READ MY STORY <span>↘</span></a>
             </div>
             <div className="hero-side">
