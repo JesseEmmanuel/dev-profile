@@ -359,19 +359,24 @@ h2 {
     transform-style: preserve-3d;
 }
 
-.book-spread--next {
-    animation: page-turn-next .7s cubic-bezier(.22, .8, .24, 1) both;
-}
-
-.book-spread--prev {
-    animation: page-turn-prev .7s cubic-bezier(.22, .8, .24, 1) both;
-}
-
 .book-page {
     min-height: 390px;
     padding: 34px 38px;
     position: relative;
     overflow: hidden;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.book-spread--next .book-page-left,
+.book-spread--prev .book-page-right {
+    animation: page-leaf-out .8s cubic-bezier(.645, .045, .355, 1) both;
+    z-index: 2;
+}
+
+.book-spread--next .book-page-right,
+.book-spread--prev .book-page-left {
+    animation: page-leaf-in .8s cubic-bezier(.645, .045, .355, 1) .08s both;
 }
 
 .book-page-left {
@@ -435,16 +440,41 @@ h2 {
 .progress-track { display: block; width: 150px; height: 2px; background: var(--line); }
 .progress-track span { display: block; height: 100%; background: var(--yellow); transition: width .35s ease; }
 
-@keyframes page-turn-next {
-    0% { opacity: .35; transform: rotateY(-14deg) translateX(-18px) scale(.985); transform-origin: right center; }
-    55% { opacity: 1; transform: rotateY(3deg) translateX(4px) scale(1.005); }
-    100% { opacity: 1; transform: rotateY(0) translateX(0) scale(1); }
+@keyframes page-leaf-out {
+    0% {
+        opacity: .98;
+        transform: rotateY(0deg);
+        transform-origin: right center;
+        box-shadow: none;
+    }
+    42% {
+        opacity: 1;
+        transform: rotateY(-82deg);
+        box-shadow: -18px 12px 22px rgba(32, 37, 34, .22);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateY(0deg);
+        transform-origin: right center;
+        box-shadow: none;
+    }
 }
 
-@keyframes page-turn-prev {
-    0% { opacity: .35; transform: rotateY(14deg) translateX(18px) scale(.985); transform-origin: left center; }
-    55% { opacity: 1; transform: rotateY(-3deg) translateX(-4px) scale(1.005); }
-    100% { opacity: 1; transform: rotateY(0) translateX(0) scale(1); }
+@keyframes page-leaf-in {
+    0% {
+        opacity: .72;
+        transform: rotateY(12deg) translateX(12px);
+        transform-origin: left center;
+    }
+    42% {
+        opacity: 1;
+        transform: rotateY(-3deg) translateX(-3px);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateY(0deg) translateX(0);
+        transform-origin: left center;
+    }
 }
 
 
