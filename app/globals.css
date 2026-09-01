@@ -355,7 +355,16 @@ h2 {
     grid-template-columns: 1fr 1fr;
     gap: 3px;
     filter: drop-shadow(12px 15px 0 rgba(0, 0, 0, .2));
-    animation: book-open .45s ease both;
+    perspective: 1400px;
+    transform-style: preserve-3d;
+}
+
+.book-spread--next {
+    animation: page-turn-next .7s cubic-bezier(.22, .8, .24, 1) both;
+}
+
+.book-spread--prev {
+    animation: page-turn-prev .7s cubic-bezier(.22, .8, .24, 1) both;
 }
 
 .book-page {
@@ -426,7 +435,17 @@ h2 {
 .progress-track { display: block; width: 150px; height: 2px; background: var(--line); }
 .progress-track span { display: block; height: 100%; background: var(--yellow); transition: width .35s ease; }
 
-@keyframes book-open { from { opacity: 0; transform: perspective(900px) rotateY(-5deg) translateY(10px); } to { opacity: 1; transform: perspective(900px) rotateY(0) translateY(0); } }
+@keyframes page-turn-next {
+    0% { opacity: .35; transform: rotateY(-14deg) translateX(-18px) scale(.985); transform-origin: right center; }
+    55% { opacity: 1; transform: rotateY(3deg) translateX(4px) scale(1.005); }
+    100% { opacity: 1; transform: rotateY(0) translateX(0) scale(1); }
+}
+
+@keyframes page-turn-prev {
+    0% { opacity: .35; transform: rotateY(14deg) translateX(18px) scale(.985); transform-origin: left center; }
+    55% { opacity: 1; transform: rotateY(-3deg) translateX(-4px) scale(1.005); }
+    100% { opacity: 1; transform: rotateY(0) translateX(0) scale(1); }
+}
 
 
 .body {
@@ -674,5 +693,12 @@ footer {
     .contact[data-parallax] {
         transform: none;
         will-change: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .book-spread--next,
+    .book-spread--prev {
+        animation: none;
     }
 }

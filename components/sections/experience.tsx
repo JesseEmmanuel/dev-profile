@@ -14,11 +14,17 @@ const experience = [
 
 export default function Experience() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [turnDirection, setTurnDirection] = useState<'next' | 'prev'>('next')
   const active = experience[activeIndex]
   const canGoBack = activeIndex > 0
   const canGoForward = activeIndex < experience.length - 1
 
-  const goTo = (index: number) => setActiveIndex(Math.max(0, Math.min(index, experience.length - 1)))
+  const goTo = (index: number) => {
+    const nextIndex = Math.max(0, Math.min(index, experience.length - 1))
+    if (nextIndex === activeIndex) return
+    setTurnDirection(nextIndex > activeIndex ? 'next' : 'prev')
+    setActiveIndex(nextIndex)
+  }
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -36,8 +42,8 @@ export default function Experience() {
         <p className="section-aside">A timeline of things<br />learned and shipped.</p>
       </div>
       <div className="experience-book" aria-label="Experience timeline">
-        <div className="book-spread" key={active.company}>
-          <article className={`book-page book-page-left note note-${active.color}`}>
+        <div className={`book-spread book-spread--${turnDirection}`} key={active.company}>
+          <article className="book-page book-page-left note note-yellow">
             <Pin aria-hidden="true" />
             <span className="index">0{activeIndex + 1}</span>
             <p className="page-label">CHAPTER {activeIndex + 1}</p>
@@ -46,7 +52,7 @@ export default function Experience() {
             <p className="company">{active.company}</p>
             <span className="page-mark">THE TRAIL</span>
           </article>
-          <article className={`book-page book-page-right note note-${active.color}`}>
+          <article className="book-page book-page-right note note-yellow">
             <Pin aria-hidden="true" />
             <p className="page-label">FIELD NOTES / {String(activeIndex + 1).padStart(2, '0')}</p>
             <h3>What I shipped</h3>
