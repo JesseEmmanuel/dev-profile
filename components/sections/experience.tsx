@@ -8,6 +8,8 @@ export default function Experience() {
         { role: 'WordPress Developer', company: 'Human Incubator Inc.', date: 'JUL — SEP 2023', color: 'blue', body: 'Maintained and enhanced client WordPress sites, resolving performance bottlenecks and implementing security improvements. Customized themes and plugins to meet business requirements.' },
         { role: 'Tech Support & WordPress Developer', company: 'Govesmart Solutions Inc.', date: '2021 — 2023', color: 'green', body: 'Developed responsive WordPress websites with cross-browser compatibility, managed social media accounts, and helped increase brand visibility and web traffic.' },
         { role: 'Freelance Web Developer', company: 'Self-Employed', date: '2021 — 2022', color: 'orange', body: 'Designed responsive websites for small businesses using WordPress, React, and Laravel. Implemented custom API integrations that enhanced functionality and engagement.' },
+
+        { role: 'Junior Systems Engineer', company: 'Apollo Technologies Inc.', date: '2020 — 2021', color: 'yellow', body: 'Configured and maintained Linux servers with high-availability setups, supporting enterprise-level systems and critical infrastructure. Implemented MySQL database synchronization and replication protocols.' },
     ]
     return (
         <section id="work" className="work ruled"><div className="section-heading"><div><p className="eyebrow">02 / THE TRAIL</p><h2>Where I&apos;ve been.</h2></div><p className="section-aside">A timeline of things<br />learned and shipped.</p></div>
