@@ -732,3 +732,88 @@ footer {
         animation: none;
     }
 }
+
+/* Trail book: desktop flipbook, mobile spring ticker */
+.experience-desktop-book {
+    display: block;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.experience-desktop-book .stf__parent {
+    margin: 0 auto;
+}
+
+.flip-page {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.flip-page .book-page {
+    flex: 1;
+    min-width: 0;
+    min-height: 390px;
+    background: var(--yellow);
+}
+
+.experience-mobile-ticker {
+    display: none;
+}
+
+.ticker-spring {
+    display: flex;
+    justify-content: space-around;
+    width: 18px;
+    height: 22px;
+    margin: 0 auto -1px;
+    overflow: hidden;
+}
+
+.ticker-spring span {
+    display: block;
+    width: 2px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--ink);
+    transform: rotate(12deg);
+}
+
+.ticker-card {
+    min-height: 390px;
+    background: var(--yellow);
+}
+
+.ticker-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 8px 0;
+    color: var(--ink);
+    font: 11px 'IBM Plex Mono', monospace;
+}
+
+.ticker-controls button {
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font: 20px 'IBM Plex Mono', monospace;
+}
+
+.ticker-controls button:disabled { opacity: .3; cursor: not-allowed; }
+
+@media (max-width: 700px) {
+    .experience-desktop-book { display: none; }
+    .experience-mobile-ticker { display: block; }
+    .ticker-card { min-height: 0; padding: 28px 26px 34px; }
+    .ticker-card h3 { margin: 30px 0 10px; font-size: clamp(30px, 10vw, 48px); line-height: 1; letter-spacing: -.05em; }
+    .ticker-card .body { margin-top: 28px; }
+    .ticker-card .index { float: right; opacity: .55; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .stf__block,
+    .stf__item,
+    .ticker-card { transition: none !important; animation: none !important; }
+}
