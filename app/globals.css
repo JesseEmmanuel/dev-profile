@@ -345,44 +345,89 @@ h2 {
     font: 12px/1.5 'IBM Plex Mono', monospace;
 }
 
-.experience-grid {
+.experience-book {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.book-spread {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-    align-items: start;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    filter: drop-shadow(12px 15px 0 rgba(0, 0, 0, .2));
+    animation: book-open .45s ease both;
 }
 
-.experience:nth-child(4),
-.experience:nth-child(5) {
-    margin-top: -20px;
+.book-page {
+    min-height: 390px;
+    padding: 34px 38px;
+    position: relative;
+    overflow: hidden;
 }
 
-.experience {
-    min-height: 305px;
-    padding: 28px 26px;
+.book-page-left {
+    transform: rotate(-1deg);
+    transform-origin: right center;
 }
 
-.experience .index {
-    float: right;
-    opacity: .5;
+.book-page-right {
+    transform: rotate(1deg);
+    transform-origin: left center;
 }
 
-.experience .date {
-    opacity: .65;
-    margin: 0 0 35px;
+.book-page-left::after,
+.book-page-right::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(0deg, transparent 0 31px, rgba(32, 37, 34, .08) 32px);
+    opacity: .55;
 }
 
-.experience h3 {
-    font-size: 25px;
-    line-height: 1;
-    letter-spacing: -.04em;
-    margin: 0 0 7px;
+.book-page-left::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 22px;
+    background: linear-gradient(90deg, transparent, rgba(32, 37, 34, .13));
 }
 
-.company {
-    font: 12px 'IBM Plex Mono', monospace;
-    margin: 0 0 20px;
+.book-page-right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 22px;
+    background: linear-gradient(90deg, rgba(32, 37, 34, .13), transparent);
 }
+
+.book-page > * { position: relative; z-index: 1; }
+.book-page .index { float: right; opacity: .55; }
+.book-page .date { opacity: .7; margin: 0; }
+.book-page h3 { font-size: clamp(28px, 4vw, 45px); line-height: 1; letter-spacing: -.05em; margin: 30px 0 10px; max-width: 360px; }
+.book-page-right h3 { font-size: clamp(26px, 3vw, 38px); margin-top: 85px; }
+.book-page .company { font: 12px 'IBM Plex Mono', monospace; margin: 0; }
+.page-label { font: 10px 'IBM Plex Mono', monospace; letter-spacing: .12em; margin: 0 0 26px; }
+.page-meta { display: flex; align-items: center; gap: 14px; }
+.page-rule { height: 1px; width: 55px; background: var(--ink); opacity: .45; }
+.page-mark { position: absolute; bottom: 30px; left: 38px; font: 10px 'IBM Plex Mono', monospace; letter-spacing: .12em; opacity: .6; }
+.turn-cue { position: absolute; right: 38px; bottom: 30px; margin: 0; font: 10px 'IBM Plex Mono', monospace; opacity: .7; }
+.turn-cue span { font-size: 18px; margin-left: 6px; }
+.book-controls { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 28px 8px 0; font: 11px 'IBM Plex Mono', monospace; }
+.book-arrow { border: 0; background: none; color: var(--foreground); cursor: pointer; font: inherit; padding: 8px 0; }
+.book-arrow span { font-size: 10px; letter-spacing: .1em; }
+.book-arrow:disabled { opacity: .3; cursor: not-allowed; }
+.book-arrow:not(:disabled):hover { color: var(--yellow); }
+.book-progress { display: flex; align-items: center; gap: 14px; color: #969b91; }
+.progress-track { display: block; width: 150px; height: 2px; background: var(--line); }
+.progress-track span { display: block; height: 100%; background: var(--yellow); transition: width .35s ease; }
+
+@keyframes book-open { from { opacity: 0; transform: perspective(900px) rotateY(-5deg) translateY(10px); } to { opacity: 1; transform: perspective(900px) rotateY(0) translateY(0); } }
+
 
 .body {
     font-size: 14px;
@@ -565,15 +610,30 @@ footer {
         margin-bottom: 38px;
     }
 
-    .experience-grid {
+    .book-spread {
         grid-template-columns: 1fr;
-        gap: 35px;
+        gap: 10px;
+        filter: drop-shadow(7px 9px 0 rgba(0, 0, 0, .2));
     }
 
-    .experience:nth-child(4),
-    .experience:nth-child(5) {
-        margin-top: 0;
+    .book-page {
+        min-height: 285px;
+        padding: 28px 26px;
     }
+
+    .book-page-left,
+    .book-page-right {
+        transform: none;
+    }
+
+    .book-page-right h3 {
+        margin-top: 34px;
+    }
+
+    .page-mark { left: 26px; bottom: 22px; }
+    .turn-cue { right: 26px; bottom: 22px; }
+    .book-controls { padding-top: 20px; }
+    .progress-track { width: 85px; }
 
     .contact {
         margin: 20px auto 75px;
